@@ -198,16 +198,41 @@
         
         ```
 3. JSON 
+    
+    +
+        ```
+        1. .stringify(data,null,들여쓰기칸설정) 
+        2. .parse(json문자열)  
+        ```
+4. .localeCompare()
 
-    + .stringify(data,null,들여쓰기칸설정) 
-    + .parse(json문자열)
+    + 대상과 괄호안의 값의 사전순서를 판별하여 결과에따라 -1,0,1 을 리턴한다
+        ```javascript
+        let a = "a";
+        let A = "A";
+        let b = "b";
+        let B = "B";
+        a.localeCompare(A)          // -1
+        a.localeCompare(b)          // -1
+        b.localeCompare(a)          //  1
+        b.localeCompare(A)          //  1
+        ```
+5. .substr(start, length)
 
+    + 파라미터로 입력받은 start index부터 length 길이만큼 string을 잘라내어 반환하는 함수이다.
+        ```javascript
+        let str = "안녕하세요?"
+        let first_char = str.substr(0, 1);          // 안
+        let second_char = str.substr(1, 1);         // 녕
+        ```
+6. .substring(startIndex, endIndex)
 
-
-
-
-
-
+    + substr와 같은 역할을 하지만 start index 부터 지정한 endIndex전 까지 잘라내어 반환하는 함수이다.
+        ```javascript
+        let str = "안녕하세요?"
+        let first_char = str.slice(0, 1);           // 안
+        let second_char = str.slice(1, 2);          // 녕
+        ```
 
 --------------------------------------- 
 --------------------------------------- 
