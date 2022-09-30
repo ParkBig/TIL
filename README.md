@@ -114,8 +114,18 @@
     CDN은 지리적으로 분산된 여러 개의 서버이다. 웹 콘텐츠를 사용자와 가까운 곳에서 전송하여 전송 속도를 높인다.  
     따라서 사용자는 가까운 서버를 통해 웹 활성화 디바이스 또는 브라우저에서 인터넷 콘텐츠에 빠르게 접속 할 수 있다.
 
+--------------------------------------- 
+--------------------------------------- 
+## **정규표현식**
 
+1. 내용정리중입니다..
 
+    + 정리중입니다..
+
+        ```javascript
+        console.log("안녕\t나는\t작성자야\n네\t이름은\t뭐니?")      // 안녕 나는 작성자야 (줄바꿈) 네 이름은 뭐니?
+
+        ```
 
 
 
@@ -124,7 +134,8 @@
 
 --------------------------------------- 
 ---------------------------------------  
-## **Array method**
+## **Array method**  
+(일부 String, Number 가능.)
 
 1. .forEach()  
 
@@ -145,6 +156,7 @@
         ```javascript
         const a = [1,2,3] // 길이 3
         const b = a.map((prop, index)=> `a[${index}] = ${prop} 입니다.`)
+
         console.log(b) // ["a[0] = 1 입니다.", "a[1] = 2 입니다.", "a[2] = 3 입니다."]
         ```
 
@@ -157,8 +169,88 @@
         ```javascript
         const a = [1,2,3,4,5]
         const b = a.filter((prop)=> prop > 2) 
+
         console.log(b) // [3,4,5]
         ```
+
+4. .slice(startIndex, endIndex)
+
+    + 대상에 startIndex 부터 endIndex바로전까지 요소를 리턴한다.  
+    (대상 배열 변화없음.)
+    ```javascript
+        let test = [1,2,3,4,5,6,7];
+        let b = test.slice(2,5)
+
+        console.log(b)                   // [3, 4, 5]
+    ```
+
+5. .splice(startIndex, length)
+
+    + 대상에 대상의 startIndex 부터 length 만큼 추출한다.  
+    (추가 기능도 있음.)
+    ```javascript
+        let test = [1,2,3,4,5,6,7];
+        let b = test.splice(2,3)
+
+        console.log(b)                   // [3, 4, 5]
+    ```
+
+6. .indexOf( searchValue, position )
+
+    + 대상에서 찾고자하는 값을 첫 발견시 그 값의 인덱스를 리턴하고 종료.
+    ```javascript
+    let test = [1,2,3,4,5,5,5,6,7,8,9]
+    let a = test.indexOf(5)
+    let b = test.indexOf(5,5)
+    let c = test.indexOf(10)
+
+    console.log(a, b, c)                    // 4, 5, -1
+    ```
+
+7. .find()
+
+    + 콜백함수의 조건을 만족하는 요소를 첫 발견시 그값을 리턴하고 종료.
+    ```javascript
+        let test = [1,2,3,4,5,6,7];
+        let a = test.find((ele,index)=>ele>5)
+
+        console.log(a)                   // 6
+    ```
+
+8. .findIndex()
+
+    + 콜백함수의 조건을 만족하는 요소를 첫 발견시 그 인덱스 값을 리턴하고 종료.
+    ```javascript
+        let test = [1,2,3,4,5,6,7];
+        let a = test.findIndex((ele,index)=>ele>5)
+        let b = test.findIndex((ele,index)=>ele<0)
+
+        console.log(a, b)                   // 5, -1
+    ```
+
+9. .sort( (a,b)=> 0이상 === 오름차순, 0이하 === 내림차순 )
+
+    + 내부함수의 return 값이 0 보다 크면 오름차순, 작으면 내림차순 정렬.  
+    요소를 아스키코드값으로 인식하기 때문에 .sort()만 하면 에러가 날 수 있다.
+        ```javascript    
+        let a = [1,4,3,2,6,5,7,8,9] 
+
+        console.log(a.sort((a,b)=>a-b))             // [1,2,3,4,5,6,7,8,9]
+        console.log(a.sort((a,b)=>b-a))             // [9,8,7,6,5,4,3,2,1]
+        ```
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---------------------------------------
 ## **Number method**
 
@@ -169,15 +261,29 @@
 
         ```javascript
         const test = 123.456789
+
         console.log(test.toFixed(3))            // 123.457
         ```
+
 2. Number.isNaN()
 
     + NaN 을 판별한다.
     
 
+
+
+
+
+
+
+
+
+
+
+
 --------------------------------------- 
-## **String method**
+## **String method**  
+(일부 Array, Number 가능.)
 
 
 1. .trim()  
@@ -186,17 +292,21 @@
 
         ```javascript
         const test = "   hello "
+
         console.log(test.trim())            // "hello"
         ```
+
 2. .split(s)
 
     + s 를 기준으로 문자 내부를 나누어 배열값에 저장하고 리턴한다.
 
         ```javascript
         const test = "1,2,3,4,5"
+
         console.log(test.split(","))        // ["1", "2", "3", "4", "5"]
         
         ```
+
 3. JSON 
     
     +
@@ -204,6 +314,7 @@
         1. .stringify(data,null,들여쓰기칸설정) 
         2. .parse(json문자열)  
         ```
+
 4. .localeCompare()
 
     + 대상과 괄호안의 값의 사전순서를 판별하여 결과에따라 -1,0,1 을 리턴한다
@@ -217,6 +328,7 @@
         b.localeCompare(a)          //  1
         b.localeCompare(A)          //  1
         ```
+
 5. .substr(start, length)
 
     + 파라미터로 입력받은 start index부터 length 길이만큼 string을 잘라내어 반환하는 함수이다.
@@ -225,6 +337,7 @@
         let first_char = str.substr(0, 1);          // 안
         let second_char = str.substr(1, 1);         // 녕
         ```
+
 6. .substring(startIndex, endIndex)
 
     + substr와 같은 역할을 하지만 start index 부터 지정한 endIndex전 까지 잘라내어 반환하는 함수이다.
@@ -233,6 +346,20 @@
         let first_char = str.slice(0, 1);           // 안
         let second_char = str.slice(1, 2);          // 녕
         ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 --------------------------------------- 
 --------------------------------------- 
@@ -347,7 +474,8 @@
 
         ```javascript
         const test =273;
-        test.sample = 10                                // 10
+        test.sample = 10        
+                                // 10
         console.log(test.sample)                        // undefined
         ```
     + new (Number, String, Boolean)을 사용하면 속성을 추가 할 수 있다.  
@@ -357,7 +485,156 @@
         const test = new Number(273);
         typeof(test);                                   // object
         test.sample = 10;
+
         console.log(test.sample)                        // 10
         console.log(test)                               // Number {273, sample:10}
         console.log(test + 7)                           // 280
         ```
+
+
+
+
+
+
+
+
+--------------------------------------- 
+--------------------------------------- 
+
+## **CLASS**
+
+1. ES6 이후로 사용가능.  
+기존에 생성자 함수와 그 함수에 전부 적용되는 프로토타입을 따로 써주던것을 class 에선 선언속에서 한번에 할 수 있다.
+
+    + 기존의 방법 Info 에 전부 프로토타입 적용시.
+    
+        ```javascript
+        function Info(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Info.prototype.race = "human"
+        Info.prototype.hello = function () {console.log("hello")}
+
+        let test = new Info("park", "secret");
+        console.log(test)                           // {name: "park", age: "secret", race: "human", hello: function () {window.runnerWindow.proxyConsole.log("hello")}}
+        ```
+
+    + class 로 표현 했을 때.
+
+        ```javascript
+        class Info {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+                // 생성자 객체에 조건문 써줄 수 있다.
+            }
+
+            race : "human"
+            
+            hello () {console.log("hello")}
+        }
+
+        let test = new Info("park", "secret")
+        console.log(test)                           // {name: "park", age: "secret", race: "human", hello: function () {window.runnerWindow.proxyConsole.log("hello")}}
+        ```
+
+2.  서로 다른 class 속 프로토타입 함수가 상당수 중복 될 경우 **extends** 를 사용하여 상속 받을 수 있다.
+
+    +  **class (상속받을 클라스) extends (상속해 줄 클라스) {}**
+
+        ```javascript
+        ( 상속 받기 전의 두개의 class )
+
+        class Rectangle {
+            constructor(width, height) {
+                this.width = width;
+                this.height = height;
+            }
+
+            getPerimeter() {
+                return (this.width + this.height)*2
+            }
+
+            getArea() {
+                return this.width * this.height
+            }
+        }
+
+        class Square {
+            constructor(length) {
+                this.length = length;
+            }
+
+            getPerimeter() {
+                return this.length *2
+            }
+
+            getArea() {
+                return this.width **2
+            }
+        }
+
+        ////////////////////////////////////////////////////////>  
+        ////////////////////////////////////////////////////////>  
+
+        ( 상속 받은 후의 두개의 class )
+
+        class Rectangle {
+            constructor(width, height) {
+                this.width = width;
+                this.height = height;
+            }
+
+            getPerimeter() {
+                return (this.width + this.height)*2
+            }
+
+            getArea() {
+                return this.width * this.height
+            }
+        }
+
+        class Square extends Rectangle {
+            constructor(length) {
+                super(length, length) // super는 상속받고 부모값사용할 때 고정이다.
+            }
+        }
+        ```
+
+3. **static** method and porperty.
+
+    + new 를 통해 class 함수를 호출하면, constructor에 의해 새로운 객체가 만들어진다.  
+    이때 constructor의 this 가 가르키는 것은 이 새로운 객체이다.  
+    **하지만,** static 이 붙은 메소드의 this 는 class 함수이다.
+
+    + **다시 말해**, static 을 붙이면 프로토타입 method가 아니라 class의 method가 되는 것이다.  
+    **따라서** static method를 호출하려면 className.method() 로 직접 호출해야된다.
+        ```javascript
+        class Test {
+            static counter = 1;
+
+            static name = "park";
+            
+            static helloTo () {return `${this.name}, hello`}
+
+            constructor(name) {
+                this.name = name;
+                Test.counter++
+            }
+            
+            hello () {return `${this.name}, hello`}
+        }
+
+        let a = new Test("kim")
+        let b = new Test("lee")
+        let c = a.hello()
+        let d = Test.name
+        let e = Test.helloTo()
+        let f = Test.counter
+
+        console.log(a, b, c, d, e, f)  
+        // {name: "kim"}, {name: "lee"}, "kim, hello", "park", "park, hello", 3
+        ```
+--------------------------------------- 
+--------------------------------------- 
